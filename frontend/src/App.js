@@ -17,6 +17,7 @@ function App() {
           <Route element={<PrivateRoute component={Dashboard} path="/dashboard"/>}  />
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/register" element={<RegisterPage/>}/>
+          <Route path="/dashboard" element={<Dashboard/>}/>
           <Route exact path="/" element={<HomePage/>}/>
         </Routes>
       </AuthProvider>
