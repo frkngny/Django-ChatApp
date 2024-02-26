@@ -7,6 +7,7 @@ import LoginPage from './views/LoginPage';
 import RegisterPage from './views/RegisterPage';
 import Dashboard from './views/Dashboard';
 import Navbar from './views/Navbar';
+import Inbox from './views/Inbox';
 
 function App() {
   return (
@@ -14,11 +15,11 @@ function App() {
       <AuthProvider>
         <Navbar />
         <Routes>
-          <Route element={<PrivateRoute component={Dashboard} path="/dashboard"/>}  />
+          <Route exact path="/" element={<HomePage/>}/>
           <Route path="/login" element={<LoginPage/>}/>
           <Route path="/register" element={<RegisterPage/>}/>
-          <Route path="/dashboard" element={<Dashboard/>}/>
-          <Route exact path="/" element={<HomePage/>}/>
+          <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>} />
+          <Route path="/inbox" element={<PrivateRoute><Inbox/></PrivateRoute>}  />
         </Routes>
       </AuthProvider>
     </Router>

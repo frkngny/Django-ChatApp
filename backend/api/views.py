@@ -43,7 +43,7 @@ class InboxView(generics.ListAPIView):
         user_id = self.kwargs['user_id']
         messages = ChatMessage.objects.filter(
             id__in=Subquery(
-                User.objects.filter(Q(sender__receiver=user_id)|Q(receiver__sender=user_id)).distinc().annotate(
+                User.objects.filter(Q(sender__receiver=user_id)|Q(receiver__sender=user_id)).distinct().annotate(
                     last_msg=Subquery(
                         ChatMessage.objects.filter(Q(sender=OuterRef('id'), receiver=user_id)|Q(receiver=OuterRef('id'), sender=user_id)).order_by('-id')[:1].values_list('id', flat=True)
                     )
@@ -77,7 +77,7 @@ class ProfileView(generics.RetrieveUpdateAPIView):
 class SearchUserView(generics.ListAPIView):
     serializer_class = ProfileSerializer
     queryset = Profile.objects.all()
-    #permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
 
     def list(self, request, *args, **kwargs):
         username = self.kwargs['username']

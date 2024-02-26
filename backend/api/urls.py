@@ -15,6 +15,6 @@ urlpatterns = [
     path('send-message', SendMessage.as_view()),
 
     #Profile
-    path('profile/<pk>', ProfileView.as_view()),
+    path('profile/<int:pk>', ProfileView.as_view()),
     path('search-user/<username>', SearchUserView.as_view()),
 ]

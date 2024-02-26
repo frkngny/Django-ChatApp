@@ -1,17 +1,16 @@
 import React, { useContext } from 'react';
 import AuthContext from '../context/AuthContext';
-import { Link } from 'react-router-dom';
-import VerifyToken from "../utils/VerifyToken";
+//import VerifyToken from "../utils/VerifyToken";
 
 
 function Navbar() {
     const { user, logoutUser } = useContext(AuthContext);
     const token = localStorage.getItem("authTokens");
 
-    if (token) {
+    /*if (token) {
         const decoded = VerifyToken(token);
         var user_id = decoded.user_id;
-    }
+    }*/
 
     return (
         <div>
@@ -42,6 +41,9 @@ function Navbar() {
                                     <>
                                         <li className="nav-item">
                                             <a className="nav-link" href="/dashboard">Dashboard</a>
+                                        </li>
+                                        <li className="nav-item">
+                                            <a className="nav-link" href="/inbox">Inbox</a>
                                         </li>
                                         <li className="nav-item">
                                             <a className="nav-link" onClick={logoutUser} style={{ cursor: "pointer" }}>Logout</a>
