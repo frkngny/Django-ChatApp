@@ -12,6 +12,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class ProfileSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
     class Meta:
         model = Profile
         fields = ['id', 'user', 'full_name', 'bio', 'image', 'verified']
@@ -51,8 +52,6 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 
 class ChatMessageSerializer(serializers.ModelSerializer):
-    sender = UserSerializer(read_only=True)
-    receiver = UserSerializer(read_only=True)
     sender_profile = ProfileSerializer(read_only=True)
     receiver_profile = ProfileSerializer(read_only=True)
     class Meta:

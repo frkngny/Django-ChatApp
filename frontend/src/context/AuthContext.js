@@ -54,7 +54,6 @@ export const AuthProvider = ({ children }) => {
             });
 
         } else {
-            console.log(response.status);
             swal.fire({
                 title: "Incorrect username or password.",
                 icon: "error",

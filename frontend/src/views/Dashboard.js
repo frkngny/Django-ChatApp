@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import useAxios from "../utils/useAxios";
 import VerifyToken from '../utils/VerifyToken';
+import AuthContext from '../context/AuthContext';
 
 function Dashboard() {
 
     const [res, setRes] = useState("");
     const api = useAxios();
     const token = localStorage.getItem("authTokens");
+    const { logoutUser } = useContext(AuthContext);
 
     if (token) {
         const decode = VerifyToken(token);
@@ -23,7 +25,8 @@ function Dashboard() {
                 setRes(response.data.response);
             } catch (error) {
                 console.log(error);
-                setRes("Something went wrong");
+                setRes("");
+                logoutUser();
             }
         }
         fetchData()

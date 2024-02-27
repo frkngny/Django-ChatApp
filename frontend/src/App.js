@@ -8,6 +8,7 @@ import RegisterPage from './views/RegisterPage';
 import Dashboard from './views/Dashboard';
 import Navbar from './views/Navbar';
 import Inbox from './views/Inbox';
+import MessageDetail from './views/MessageDetail';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/register" element={<RegisterPage/>}/>
           <Route path="/dashboard" element={<PrivateRoute><Dashboard/></PrivateRoute>} />
           <Route path="/inbox" element={<PrivateRoute><Inbox/></PrivateRoute>}  />
+          
         </Routes>
       </AuthProvider>
     </Router>
